@@ -1,21 +1,34 @@
-﻿using Tetris.Utilities;
+﻿using System.Text;
+using Tetris.Utilities;
 
 namespace Tetris.Models
 {
     class GameField
     {
+        private const char FieldBackgroundSymbol = '\u25A1';
         private int height;
         private int width;
+        
+
+        public GameField(int height, int width)
+        {
+            Height = height;
+            Width = width;
+        }
 
         public int Height
         {
-            get { return height; }
-            set { height = value; }
+            get => height;
+            private set
+            {
+                ValidateData.ValidateZeroOrNegativeDimensions(value);
+                height = value;
+            }
         }
 
         public int Width
         {
-            get { return width; }
+            get => width;
             private set
             {
                 ValidateData.ValidateZeroOrNegativeDimensions(value);
@@ -23,6 +36,17 @@ namespace Tetris.Models
             }
         }
 
+        public string DrawField()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(new string('_', width + 2));
+            for (int i = 0; i < height; i++)
+            {
+                sb.AppendLine($"|{new string(FieldBackgroundSymbol, width)}|");
+            }
+            sb.AppendLine(new string('̅', width + 2));
 
+            return sb.ToString().Trim();
+        }
     }
 }
