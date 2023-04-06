@@ -5,6 +5,8 @@ using Tetris.Core.Contracts;
 using Tetris.IO;
 using Tetris.IO.Contracts;
 using Tetris.Models;
+using Tetris.Models.Contracts;
+using Tetris.Models.Figures;
 using Tetris.Utilities;
 
 namespace Tetris.Core
@@ -34,42 +36,46 @@ namespace Tetris.Core
 
             GameField field = new GameField(20, 10);
 
-            writer.Write(field.DrawField());
-            int count = 0;
-
             int row = 1;
-            int column = 2;
-            ConsoleSetup.SetCursorPosition(row, column);
+            int column = 1;
 
+            TFigure tFigure = new TFigure();
             while (true)
             {
-                ConsoleKeyInfo pressedKey = Console.ReadKey();
-
-                switch (pressedKey.Key)
+                ConsoleKeyInfo consoleKeyInfo;
+                do
                 {
-                    case ConsoleKey.UpArrow:
-                        ConsoleSetup.SetCursorPosition(row, column);
-                        writer.Write(Char.ToString('\u25A1'));
-                        ConsoleSetup.SetCursorPosition(--row, column);
-                        break;
-                    case ConsoleKey.DownArrow:
-                        ConsoleSetup.SetCursorPosition(row, column);
-                        writer.Write(Char.ToString('\u25A1'));
-                        ConsoleSetup.SetCursorPosition(++row, column);
-                        break;
-                    case ConsoleKey.LeftArrow:
-                        ConsoleSetup.SetCursorPosition(row, column);
-                        writer.Write(Char.ToString('\u25A1'));
-                        ConsoleSetup.SetCursorPosition(row, --column);
-                        break;
-                    case ConsoleKey.RightArrow:
-                        ConsoleSetup.SetCursorPosition(row, column);
-                        writer.Write(Char.ToString('\u25A1'));
-                        ConsoleSetup.SetCursorPosition(row, ++column);
-                        break;
-                    default: continue;
-                }
-                writer.Write(Char.ToString('■'));
+                    if (Console.KeyAvailable)
+                    {
+                        consoleKeyInfo = Console.ReadKey();
+
+
+                        if (Console.KeyAvailable)
+                        {
+
+                            if (consoleKeyInfo.Key == ConsoleKey.LeftArrow)
+                            {
+                                column--;
+                            }
+                            else if (consoleKeyInfo.Key == ConsoleKey.RightArrow)
+                            {
+                                column++;
+                            }
+                            else if (consoleKeyInfo.Key == ConsoleKey.DownArrow)
+                            {
+                                row++;
+                            }
+                        }
+                    }
+
+                    Console.SetCursorPosition(0, 0);
+                    writer.Write(field.DrawField());
+
+                    tFigure.RotateFigure();
+                    tFigure.Draw(column, row);
+                    Thread.Sleep(500);
+
+                } while (!Console.KeyAvailable);
             }
         }
     }
