@@ -1,6 +1,5 @@
-﻿namespace Tetris.Core.Contracts
+﻿namespace Tetris.Core.Contracts;
+
+public interface IController
 {
-    public interface IController
-    {
-    }
 }

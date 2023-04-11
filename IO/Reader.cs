@@ -1,13 +1,12 @@
 ﻿using System;
 using Tetris.IO.Contracts;
 
-namespace Tetris.IO
+namespace Tetris.IO;
+
+public class Reader : IReader
 {
-    public class Reader : IReader
+    public string ReadLine()
     {
-        public string ReadLine()
-        {
-            return Console.ReadLine();
-        }
+        return Console.ReadLine();
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IRotate
     {
-        public void RotateFigure();
+        public void Rotate();
     }
 }

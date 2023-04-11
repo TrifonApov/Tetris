@@ -1,7 +1,6 @@
-﻿namespace Tetris.Utilities.Messages
+﻿namespace Tetris.Utilities.Messages;
+
+public static class OutputMessages
 {
-    public static class OutputMessages
-    {
-        public const string GameOver = "GAME OVER!!!";
-    }
+    public const string GameOver = "GAME OVER!!!";
 }

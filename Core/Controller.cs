@@ -1,8 +1,7 @@
 ﻿using Tetris.Core.Contracts;
 
-namespace Tetris.Core
+namespace Tetris.Core;
+
+public class Controller : IController
 {
-    public class Controller : IController
-    {
-    }
 }

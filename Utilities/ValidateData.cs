@@ -1,16 +1,15 @@
 ﻿using System;
 using Tetris.Utilities.Messages;
 
-namespace Tetris.Utilities
+namespace Tetris.Utilities;
+
+static class ValidateData
 {
-    static class ValidateData
+    public static void ValidateZeroOrNegativeDimensions(int value)
     {
-        public static void ValidateZeroOrNegativeDimensions(int value)
+        if (value < 0)
         {
-            if (value < 0)
-            {
-                throw new ArgumentException(ExceptionMessages.ZeroOrNegativeDimension);
-            }
+            throw new ArgumentException(ExceptionMessages.ZeroOrNegativeDimension);
         }
     }
 }

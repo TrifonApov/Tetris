@@ -1,52 +1,55 @@
 ﻿using System.Text;
 using Tetris.Utilities;
 
-namespace Tetris.Models
+namespace Tetris.Models;
+
+class GameField
 {
-    class GameField
+    private const char FieldBackgroundSymbol = '\u25A1';
+    private int height;
+    private int width;
+
+
+    public GameField(int height, int width)
     {
-        private const char FieldBackgroundSymbol = '\u25A1';
-        private int height;
-        private int width;
-        
+        Height = height;
+        Width = width;
+    }
 
-        public GameField(int height, int width)
+    public int Height
+    {
+        get => height;
+        private set
         {
-            Height = height;
-            Width = width;
+            ValidateData.ValidateZeroOrNegativeDimensions(value);
+            height = value;
         }
+    }
 
-        public int Height
+    public int Width
+    {
+        get => width;
+        private set
         {
-            get => height;
-            private set
+            ValidateData.ValidateZeroOrNegativeDimensions(value);
+            width = value;
+        }
+    }
+
+    public string DrawField()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine(new string('_', width * 2));
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width * 2; j++)
             {
-                ValidateData.ValidateZeroOrNegativeDimensions(value);
-                height = value;
+                sb.Append(j % 2 == 0 ? '[' : ']');
             }
+            sb.AppendLine();
         }
+        sb.AppendLine(new string('̅', width * 2));
 
-        public int Width
-        {
-            get => width;
-            private set
-            {
-                ValidateData.ValidateZeroOrNegativeDimensions(value);
-                width = value;
-            }
-        }
-
-        public string DrawField()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(new string('_', width + 2));
-            for (int i = 0; i < height; i++)
-            {
-                sb.AppendLine($"|{new string(FieldBackgroundSymbol, width)}|");
-            }
-            sb.AppendLine(new string('̅', width + 2));
-
-            return sb.ToString().Trim();
-        }
+        return sb.ToString().Trim();
     }
 }

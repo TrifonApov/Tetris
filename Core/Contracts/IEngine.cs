@@ -1,7 +1,6 @@
-﻿namespace Tetris.Core.Contracts
+﻿namespace Tetris.Core.Contracts;
+
+public interface IEngine
 {
-    public interface IEngine
-    {
-        void Run();
-    }
+    void Run();
 }

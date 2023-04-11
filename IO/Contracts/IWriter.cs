@@ -1,9 +1,8 @@
-﻿namespace Tetris.IO.Contracts
-{
-    public interface IWriter
-    {
-        void Write(string message);
+﻿namespace Tetris.IO.Contracts;
 
-        void WriteLine(string message);
-    }
+public interface IWriter
+{
+    void Write(string message);
+
+    void WriteLine(string message);
 }

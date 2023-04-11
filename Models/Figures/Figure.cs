@@ -1,25 +1,17 @@
-﻿using System;
-using Tetris.Enums;
+﻿using Tetris.Enums;
 using Tetris.Models.Contracts;
 
-namespace Tetris.Models.Figures
+namespace Tetris.Models.Figures;
+
+public abstract class Figure : IDraw, IRotate
 {
-    public abstract class Figure : IFigure
+    protected Figure()
     {
-        private int height;
-        private int width;
-
-        protected Figure(int height, int width)
-        {
-            this.height = height;
-            this.width = width;
-        }
-
-        
-        public int Height => height;
-
-        public int Width => width;
-
-        
+        Direction = Direction.up;
     }
+
+    public Direction Direction { get; protected set; }
+
+    public abstract void Draw(int startColumn, int startRow);
+    public abstract void Rotate();
 }

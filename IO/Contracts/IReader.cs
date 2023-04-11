@@ -1,7 +1,6 @@
-﻿namespace Tetris.IO.Contracts
+﻿namespace Tetris.IO.Contracts;
+
+public interface IReader
 {
-    public interface IReader
-    {
-        string ReadLine();
-    }
+    string ReadLine();
 }

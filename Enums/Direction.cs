@@ -1,10 +1,9 @@
-﻿namespace Tetris.Enums
+﻿namespace Tetris.Enums;
+
+public enum Direction
 {
-    public enum Direction
-    {
-        up,
-        down, 
-        left, 
-        right
-    }
+    up,
+    down, 
+    left, 
+    right
 }
