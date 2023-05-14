@@ -1,7 +1,6 @@
-﻿namespace Tetris.Models.Contracts
+﻿namespace Tetris.Models.Contracts;
+
+public interface IRotate
 {
-    public interface IRotate
-    {
-        public void Rotate();
-    }
+    public void Rotate();
 }

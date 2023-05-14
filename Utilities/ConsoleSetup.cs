@@ -7,16 +7,14 @@ public static class ConsoleSetup
 {
     public static void SetHeight(int rows)
     {
-        Console.WindowHeight = rows;
+        Console.WindowHeight = rows+ 3;
         Console.BufferHeight = rows + 3;
-        Console.WindowHeight = rows + 3;
     }
 
     public static void SetWidth(int columns)
     {
-        Console.WindowWidth = columns;
-        Console.BufferWidth = columns + 20;
         Console.WindowWidth = columns + 20;
+        Console.BufferWidth = columns + 20;
     }
 
     public static void SetEncoding(Encoding encoding)
@@ -41,7 +39,7 @@ public static class ConsoleSetup
 
     public static void SetCursorPosition(int topLeftCornerRow, int topLeftCornerColumn)
     {
-        Console.SetCursorPosition(topLeftCornerColumn,topLeftCornerRow);
+        Console.SetCursorPosition(topLeftCornerColumn, topLeftCornerRow);
     }
 
     public static void HideCursor()

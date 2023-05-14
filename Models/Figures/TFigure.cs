@@ -6,6 +6,13 @@ namespace Tetris.Models.Figures;
 
 public class TFigure : Figure
 {
+    private const int THeight = 3;
+    private const int TWidth = 3;
+
+    public TFigure() : base(THeight, TWidth)
+    {
+    }
+
     public override void Draw(int startColumn, int startRow)
     {
         switch (this.Direction)

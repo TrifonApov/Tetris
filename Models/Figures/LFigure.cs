@@ -5,16 +5,23 @@ namespace Tetris.Models.Figures;
 
 public class LFigure : Figure
 {
+    private const int LHeight = 3;
+    private const int LWidth = 3;
+
+    public LFigure() : base(LHeight, LWidth)
+    {
+    }
+    
     public override void Draw(int startColumn, int startRow)
     {
         switch (this.Direction)
         {
             case Direction.up:
-                Console.SetCursorPosition(startColumn + 2, startRow);
+                Console.SetCursorPosition(startColumn, startRow);
                 Console.Write("████[]");
-                Console.SetCursorPosition(startColumn + 2, startRow + 1);
+                Console.SetCursorPosition(startColumn, startRow + 1);
                 Console.Write("[]██[]");
-                Console.SetCursorPosition(startColumn + 2, startRow + 2);
+                Console.SetCursorPosition(startColumn, startRow + 2);
                 Console.Write("[]██[]");
                 break;
 
@@ -52,16 +59,16 @@ public class LFigure : Figure
         switch (Direction)
         {
             case Direction.up:
-                Direction = Direction.right;
-                break;
-            case Direction.right:
-                Direction = Direction.down;
-                break;
-            case Direction.down:
                 Direction = Direction.left;
                 break;
-            case Direction.left:
+            case Direction.right:
                 Direction = Direction.up;
+                break;
+            case Direction.down:
+                Direction = Direction.right;
+                break;
+            case Direction.left:
+                Direction = Direction.down;
                 break;
         }
     }

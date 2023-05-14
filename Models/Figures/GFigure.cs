@@ -5,26 +5,33 @@ namespace Tetris.Models.Figures;
 
 public class GFigure : Figure
 {
+    private const int GHeight = 3;
+    private const int GWidth = 3;
+
+    public GFigure() : base(GHeight, GWidth)
+    {
+    }
+
     public override void Draw(int startColumn, int startRow)
     {
         switch (this.Direction)
         {
             case Direction.up:
-                Console.SetCursorPosition(startColumn + 2, startRow);
+                Console.SetCursorPosition(startColumn, startRow);
                 Console.Write("[]████");
-                Console.SetCursorPosition(startColumn + 2, startRow + 1);
+                Console.SetCursorPosition(startColumn, startRow + 1);
                 Console.Write("[]██[]");
-                Console.SetCursorPosition(startColumn + 2, startRow + 2);
+                Console.SetCursorPosition(startColumn, startRow + 2);
                 Console.Write("[]██[]");
                 break;
 
             case Direction.left:
                 Console.SetCursorPosition(startColumn, startRow);
-                Console.Write("[][][]");
-                Console.SetCursorPosition(startColumn, startRow + 1);
                 Console.Write("██[][]");
-                Console.SetCursorPosition(startColumn, startRow + 2);
+                Console.SetCursorPosition(startColumn, startRow + 1);
                 Console.Write("██████");
+                Console.SetCursorPosition(startColumn, startRow + 2);
+                Console.Write("[][][]");
                 break;
 
             case Direction.right:
@@ -65,4 +72,5 @@ public class GFigure : Figure
                 break;
         }
     }
+
 }

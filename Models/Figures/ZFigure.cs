@@ -3,39 +3,36 @@ using Tetris.Enums;
 
 namespace Tetris.Models.Figures;
 
-public class LineFigure : Figure
+public class ZFigure : Figure
 {
-    private const int LineHeight = 4;
-    private const int LineWidth = 4;
+    private const int ZHeight = 3;
+    private const int ZWidth = 3;
 
-    public LineFigure() : base(LineHeight, LineWidth)
+    public ZFigure() : base(ZHeight, ZWidth)
     {
     }
 
     public override void Draw(int startColumn, int startRow)
     {
-        switch (this.Direction)
+        switch (Direction)
         {
             case Direction.up:
                 Console.SetCursorPosition(startColumn, startRow);
-                Console.Write("[]██[][]");
+                Console.Write("[][][]");
                 Console.SetCursorPosition(startColumn, startRow + 1);
-                Console.Write("[]██[][]");
+                Console.Write("████[]");
                 Console.SetCursorPosition(startColumn, startRow + 2);
-                Console.Write("[]██[][]");
-                Console.SetCursorPosition(startColumn, startRow + 3);
-                Console.Write("[]██[][]");
+                Console.Write("[]████");
+                
                 break;
 
             case Direction.down:
                 Console.SetCursorPosition(startColumn, startRow);
-                Console.Write("[][][][]");
+                Console.Write("[]██[]");
                 Console.SetCursorPosition(startColumn, startRow + 1);
-                Console.Write("[][][][]");
+                Console.Write("████[]");
                 Console.SetCursorPosition(startColumn, startRow + 2);
-                Console.Write("████████");
-                Console.SetCursorPosition(startColumn, startRow + 3);
-                Console.Write("[][][][]");
+                Console.Write("██[][]");
                 break;
         }
     }
@@ -47,10 +44,11 @@ public class LineFigure : Figure
             case Direction.up:
                 Direction = Direction.down;
                 break;
-            
+
             case Direction.down:
                 Direction = Direction.up;
                 break;
         }
     }
+
 }
